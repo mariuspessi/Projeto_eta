@@ -53,7 +53,8 @@ const InputArea = styled.div`
 
 
 const Form = ({ getUsers, onEdit, setOnEdit }) => {
-    const ref = useRef();
+    const ref = useRef({
+         });
       
     useEffect(() => {
         if (onEdit) {
@@ -65,7 +66,7 @@ const Form = ({ getUsers, onEdit, setOnEdit }) => {
             user.phFiltro.value = onEdit.phFiltro;
             user.phTratada.value = onEdit.phTratada;
             user.phReservatorio.value = onEdit.phReservatorio;
-            user.condtBruta.value = onEdit.condtBruta;
+            user.condtRio.value = onEdit.condtRio;
             user.condtTrat.value = onEdit.condtTrat;
             user.cloroTrat.value = onEdit.cloroTrat;
             user.cloroReserv.value = onEdit.cloroReserv;
@@ -73,6 +74,7 @@ const Form = ({ getUsers, onEdit, setOnEdit }) => {
             user.alcTrat.value = onEdit.alcTrat;
             user.durRio.value = onEdit.durRio;
             user.durTrat.value = onEdit.durTrat;
+            user.analist.value = onEdit.analist;
         }
     }, [onEdit]);
 
@@ -82,31 +84,35 @@ const Form = ({ getUsers, onEdit, setOnEdit }) => {
        const user = ref.current;
        
        if (
-          !user.data.value           ||
+          !user.dhata.value          ||
           !user.hora.value           ||
           !user.phRio.value          ||
           !user.phFiltro.value       ||
           !user.phTratada.value      ||
           !user.phReservatorio.value ||
-          !user.condtBruta.value     ||
+          !user.condtRio.value       ||
           !user.condtTrat.value      ||
           !user.alcRio.value         ||
           !user.alcTrat.value        ||
           !user.durRio.value         ||
-          !user.durTrat.value        
+          !user.durTrat.value        ||
+          !user.analist.value        ||
+          !user.cloroReserv.value    ||
+          !user.cloroTrat.value 
        )  {
         return toast.warn("Preencha todos os campos!");
        }
+
        if (onEdit) {
          await axios
-           .put("http://localhost:8800/eta" + onEdit.id,{
-            data:                user.dhata.value,
+           .put("http://localhost:8800/" + onEdit.id, {
+            dhata:                user.dhata.value,
             hora:                user.hora.value,
             phRio:               user.phRio.value,
             phFiltro:            user.phFiltro.value,
             phTratada:           user.phTratada.value,
             phReservatorio:      user.phReservatorio.value,
-            condtBruta:          user.condtBruta.value,
+            condtRio:            user.condtRio.value,
             condtTrat:           user.condtTrat.value,
             cloroTrat:           user.cloroTrat.value,
             cloroReserv:         user.cloroReserv.value,
@@ -114,19 +120,20 @@ const Form = ({ getUsers, onEdit, setOnEdit }) => {
             alcTrat:             user.alcTrat.value,
             durRio:              user.durRio.value,
             durTrat:             user.durTrat.value,
+            analist:             user.analist.value,
            })
-        .then(({ data}) => toast.success(data))
-        .catch(({ data}) => toast.error(data));
+        .then(({ data }) => toast.success(data))
+        .catch(({ data }) => toast.error(data));
         }  else {
           await axios
-            .post("http://localhost:8800/eta", {
-                data:                user.dhata.value,
+            .post("http://localhost:8800", {
+                dhata:               user.dhata.value,
                 hora:                user.hora.value,
                 phRio:               user.phRio.value,
                 phFiltro:            user.phFiltro.value,
                 phTratada:           user.phTratada.value,
                 phReservatorio:      user.phReservatorio.value,
-                condtBruta:          user.condtBruta.value,
+                condtRio:            user.condtRio.value,
                 condtTrat:           user.condtTrat.value,
                 cloroTrat:           user.cloroTrat.value,
                 cloroReserv:         user.cloroReserv.value,
@@ -134,9 +141,10 @@ const Form = ({ getUsers, onEdit, setOnEdit }) => {
                 alcTrat:             user.alcTrat.value,
                 durRio:              user.durRio.value,
                 durTrat:             user.durTrat.value,
+                analist:             user.analist.value,
             })
-        .then(({ data}) => toast.success(data))
-        .catch(({ data}) => toast.error(data));
+            .then(({ data }) => toast.success(data))
+            .catch(({ data }) => toast.error(data));
        }
 
           user.dhata.value = "";           
@@ -145,7 +153,7 @@ const Form = ({ getUsers, onEdit, setOnEdit }) => {
           user.phFiltro.value = "";       
           user.phTratada.value = "";      
           user.phReservatorio.value = ""; 
-          user.condtBruta.value = "";     
+          user.condtRio.value = "";     
           user.condtTrat.value = "";      
           user.alcRio.value = "";         
           user.alcTrat.value = "";        
@@ -195,7 +203,7 @@ const Form = ({ getUsers, onEdit, setOnEdit }) => {
 
         <InputArea>
         <Label> Condutividade Água Bruta </Label>
-        <Input name = "condtBruta" />
+        <Input name = "condtRio" />
         </InputArea>
 
         <InputArea>

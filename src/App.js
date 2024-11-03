@@ -22,7 +22,7 @@ function App() {
 
   const getUsers = async () =>{
     try {
-      const res = await axios.get("http://localhost:8800/ETA");
+      const res = await axios.get("http://localhost:8800/");
         setUsers(res.data.sort((a, b) => (a.analist > b.analist ? 1 : -1)));
     } catch (error) {
       toast.error(error);
@@ -38,7 +38,8 @@ function App() {
     
       <Title>Tratamento de Água</Title>
       <Form onEdit={onEdit} setOnEdit={setOnEdit} getUsers={getUsers}/>
-      <Grid users={users}/>
+      <Grid users={users} setUsers={setUsers} setOnEdit={setOnEdit} />
+
   
    
     
