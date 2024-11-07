@@ -5,7 +5,7 @@ import { toast, ToastContainer } from "react-toastify";
 import Form from "./components/form.js";
 import Grid from "./components/grid.js";
 import axios from "axios";
-//import GlobalStyle from "./styles/global.js";
+
 
 
 
@@ -40,8 +40,6 @@ function App() {
       <Form onEdit={onEdit} setOnEdit={setOnEdit} getUsers={getUsers}/>
       <Grid users={users} setUsers={setUsers} setOnEdit={setOnEdit} />
 
-  
-   
     
     </>
   );

@@ -24,7 +24,7 @@ export const Thread = styled.thead``;
 export const Tr = styled.tr``;
 
 export const Th =  styled.th`
-  text-align: start;
+  text-align: center;
   border-bottom: inset;
   padding-bottom: 1px;
   @media(max-width: 1000px){
@@ -34,7 +34,7 @@ export const Th =  styled.th`
 
 export const Td =  styled.td`
   padding-top: 5px;
-  text-align: ${(props) => (props.alignCenter ? "center": "start" )};
+  text-align: ${(props) => (props.alignCenter ? "center": "center" )};
   width: ${(props) => (props.width ? props.width: "auto" )};
   @media(max-width: 500px){
     ${(props) => props.onlyweb && "display: none"}
